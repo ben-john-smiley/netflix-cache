@@ -75,3 +75,10 @@ $ ./netflix-cache -p 8080
 ^C[graceful] shutdown initiated
 {"level":"fatal","msg":"\u003cnil\u003e","time":"2023-11-06T17:00:37-08:00"}
 ```
+
+# Cache Configuration
+The cache configuration is hard coded into `/netflix-cache/resources/cache/cache.go`
+
+The cache is configured to have a maximum size of 2 GB, oldest members will be evicted if the cache attempts to grow beyond this.
+
+The cache holds elements in the store for a configured time of one hour. Considered the option of checking etags at the github API endpoints to determine if the cached data was stale but opted to just have a set life-span of cache members for the time being.
